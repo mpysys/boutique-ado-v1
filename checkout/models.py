@@ -1,4 +1,3 @@
-
 import uuid
 
 from django.db import models
@@ -6,7 +5,7 @@ from django.db.models import Sum
 from django.conf import settings
 
 from products.models import Product
-# Create your models here.
+
 
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
@@ -25,10 +24,10 @@ class Order(models.Model):
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
 
     def _generate_order_number(self):
-            """
-            Generate a random, unique order number using UUID
-            """
-            return uuid.uuid4().hex.upper()
+        """
+        Generate a random, unique order number using UUID
+        """
+        return uuid.uuid4().hex.upper()
 
     def update_total(self):
         """
